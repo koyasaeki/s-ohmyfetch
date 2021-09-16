@@ -1,5 +1,11 @@
 import { $fetch } from "ohmyfetch";
 
-const data = await $fetch<object>("https://api.github.com/");
+interface GitHubApi {
+  // eslint-disable-next-line camelcase
+  current_user_url: string;
+}
+
+// eslint-disable-next-line camelcase
+const { current_user_url } = await $fetch<GitHubApi>("https://api.github.com/");
 // eslint-disable-next-line no-console
-console.log(data);
+console.log(current_user_url);
